@@ -37,7 +37,7 @@ fn main() {
                 }
             }
 
-            return first.unwrap() * 10 + last.unwrap();
+            first.unwrap() * 10 + last.unwrap()
         })
         .sum();
 

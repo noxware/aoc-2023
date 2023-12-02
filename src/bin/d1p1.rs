@@ -12,7 +12,7 @@ fn main() {
             let first = iter.next().unwrap();
             let last = iter.last().unwrap_or(first);
 
-            return first * 10 + last;
+            first * 10 + last
         })
         .sum();
 
