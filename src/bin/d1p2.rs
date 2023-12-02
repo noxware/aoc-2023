@@ -1,5 +1,5 @@
-// Simplier than my original solution and preserves everything from part 1,
-// but may be less performant.
+// Simplier than my original solution (now d1p2a1) and preserves everything
+// from part 1, but may be less performant.
 
 fn main() {
     let result: u32 = std::fs::read_to_string("inputs/d1.txt")
