@@ -3,11 +3,7 @@ fn main() {
         .expect("Unable to read input")
         .lines()
         .map(|l| {
-            let mut iter = l
-                .chars()
-                .map(|c| c.to_digit(10))
-                .filter(|d| d.is_some())
-                .map(|d| d.unwrap());
+            let mut iter = l.chars().filter_map(|c| c.to_digit(10));
 
             let first = iter.next().unwrap();
             let last = iter.last().unwrap_or(first);
