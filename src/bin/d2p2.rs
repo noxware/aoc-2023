@@ -26,7 +26,7 @@ fn solve(puzzle: &str) -> u32 {
         let mut min_blue = 0;
 
         for (count, color) in game {
-            let count: u32 = count.parse().expect("subset count is not a number");
+            let count: u32 = count.parse().expect("count is not a number");
 
             match color {
                 "red" => {
