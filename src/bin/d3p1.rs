@@ -1,5 +1,4 @@
 use std::collections::HashMap;
-use std::str::FromStr;
 
 #[derive(Copy, Clone, Hash, PartialEq, Eq, Debug)]
 struct Point {
@@ -13,9 +12,10 @@ impl Point {
     }
 }
 
-#[derive(Copy, Clone, Hash, PartialEq, Eq, Debug)]
-struct PointValue {
-    value: char,
+#[derive(Copy, Clone, Debug)]
+enum PointValue {
+    Digit(char),
+    Symbol(char),
 }
 
 impl PointValue {
@@ -24,15 +24,11 @@ impl PointValue {
             return Err(());
         }
 
-        Ok(Self { value })
-    }
+        if value.is_ascii_digit() {
+            return Ok(Self::Digit(value));
+        }
 
-    fn is_digit(&self) -> bool {
-        self.value.is_ascii_digit()
-    }
-
-    fn is_symbol(&self) -> bool {
-        !self.is_digit()
+        Ok(Self::Symbol(value))
     }
 }
 
@@ -107,7 +103,7 @@ impl Engine {
     fn is_part_number_component(&self, x: i32, y: i32) -> bool {
         self.get_adjacent(x, y)
             .iter()
-            .any(|adj| adj.is_some_and(|val| val.is_symbol()))
+            .any(|adj| matches!(adj, Some(PointValue::Symbol(_))))
     }
 }
 
@@ -128,8 +124,8 @@ impl PartsNumberBuilder {
 
     fn consume_buffer(&mut self) {
         if self.is_part_number {
-            self.part_numbers
-                .push(i32::from_str(&self.current_buffer).expect("invalid part number"));
+            let number: i32 = self.current_buffer.parse().expect("invalid part number");
+            self.part_numbers.push(number);
         }
 
         self.current_buffer.clear();
@@ -163,17 +159,16 @@ fn solve(puzzle: &str) -> i32 {
 
     for y in min_y..=max_y {
         for x in min_x..=max_x {
-            if let Some(value) = engine.get(x, y) {
-                if value.is_digit() {
-                    builder.push_digit(value.value);
+            match engine.get(x, y) {
+                Some(PointValue::Digit(digit)) => {
+                    builder.push_digit(digit);
                     if engine.is_part_number_component(x, y) {
                         builder.flag_part_number();
                     }
-                } else {
+                }
+                _ => {
                     builder.consume_buffer();
                 }
-            } else {
-                builder.consume_buffer();
             }
         }
 
