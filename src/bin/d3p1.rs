@@ -1,3 +1,6 @@
+// The implementation I used to solve part 2 could solve this with little
+// modifications probably.
+
 use std::collections::HashMap;
 
 #[derive(Copy, Clone, Hash, PartialEq, Eq, Debug)]
