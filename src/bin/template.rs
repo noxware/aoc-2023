@@ -2,7 +2,7 @@ fn normalize(puzzle: &str) -> String {
     todo!();
 }
 
-fn solve(puzzle: &str) -> u32 {
+fn solve(puzzle: &str) -> i32 {
     let puzzle = normalize(puzzle);
     todo!();
 }
