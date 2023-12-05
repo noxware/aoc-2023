@@ -1,3 +1,5 @@
+use aocd::prelude::*;
+
 fn normalize(puzzle: &str) -> String {
     return puzzle
         .trim()
@@ -66,8 +68,9 @@ fn solve(puzzle: &str) -> i32 {
     puzzle.lines().map(Card::parse).map(|c| c.value()).sum()
 }
 
+#[aocd(2023, 4)]
 fn main() {
-    let input = std::fs::read_to_string("inputs/d4.txt").expect("Unable to read input");
+    let input = input!();
     let result = solve(&input);
     println!("{}", result);
 }

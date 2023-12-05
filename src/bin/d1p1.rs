@@ -1,6 +1,8 @@
+use aocd::prelude::*;
+
+#[aocd(2023, 1)]
 fn main() {
-    let result: u32 = std::fs::read_to_string("inputs/d1.txt")
-        .expect("Unable to read input")
+    let result: u32 = input!()
         .lines()
         .map(|l| {
             let mut iter = l.chars().filter_map(|c| c.to_digit(10));

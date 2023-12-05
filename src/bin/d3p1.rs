@@ -1,6 +1,7 @@
 // The implementation I used to solve part 2 could solve this with little
 // modifications probably.
 
+use aocd::prelude::*;
 use std::collections::HashMap;
 
 #[derive(Copy, Clone, Hash, PartialEq, Eq, Debug)]
@@ -181,8 +182,9 @@ fn solve(puzzle: &str) -> i32 {
     builder.build().iter().sum()
 }
 
+#[aocd(2023, 3)]
 fn main() {
-    let input = std::fs::read_to_string("inputs/d3.txt").expect("Unable to read input");
+    let input = input!();
     let result = solve(&input);
     println!("{}", result);
 }

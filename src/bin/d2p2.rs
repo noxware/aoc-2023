@@ -1,3 +1,5 @@
+use aocd::prelude::*;
+
 fn normalize(puzzle: &str) -> String {
     puzzle
         .trim()
@@ -54,8 +56,9 @@ fn solve(puzzle: &str) -> u32 {
     })
 }
 
+#[aocd(2023, 2)]
 fn main() {
-    let input = std::fs::read_to_string("inputs/d2.txt").expect("Unable to read input");
+    let input = input!();
     let result = solve(&input);
     println!("{}", result);
 }

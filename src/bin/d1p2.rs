@@ -1,9 +1,11 @@
 // Simplier than my original solution (now d1p2a1) and preserves everything
 // from part 1, but may be less performant.
 
+use aocd::prelude::*;
+
+#[aocd(2023, 1)]
 fn main() {
-    let result: u32 = std::fs::read_to_string("inputs/d1.txt")
-        .expect("Unable to read input")
+    let result: u32 = input!()
         .lines()
         .map(|l| {
             l.replace("one", "one1one")

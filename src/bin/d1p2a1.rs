@@ -1,3 +1,5 @@
+use aocd::prelude::*;
+
 fn try_parse_digit(slice: &[char]) -> Option<u32> {
     if let Some(digit) = slice[0].to_digit(10) {
         return Some(digit);
@@ -17,9 +19,9 @@ fn try_parse_digit(slice: &[char]) -> Option<u32> {
     }
 }
 
+#[aocd(2023, 1)]
 fn main() {
-    let result: u32 = std::fs::read_to_string("inputs/d1.txt")
-        .expect("Unable to read input")
+    let result: u32 = input!()
         .lines()
         .map(|l| {
             let chars: Vec<_> = l.chars().collect();

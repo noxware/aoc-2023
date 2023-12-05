@@ -1,6 +1,8 @@
 // This solution is not efficient. It uses more than a GB and it is very slow
 // if you don't run it in release mode.
 
+use aocd::prelude::*;
+
 fn normalize(puzzle: &str) -> String {
     return puzzle
         .trim()
@@ -109,8 +111,9 @@ fn solve(puzzle: &str) -> i32 {
     deck.len()
 }
 
+#[aocd(2023, 4)]
 fn main() {
-    let input = std::fs::read_to_string("inputs/d4.txt").expect("Unable to read input");
+    let input = input!();
     let result = solve(&input);
     println!("{}", result);
 }

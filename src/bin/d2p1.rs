@@ -1,3 +1,5 @@
+use aocd::prelude::*;
+
 const RED_LIMIT: u32 = 12;
 const GREEN_LIMIT: u32 = 13;
 const BLUE_LIMIT: u32 = 14;
@@ -51,8 +53,9 @@ fn solve(puzzle: &str) -> u32 {
     })
 }
 
+#[aocd(2023, 2)]
 fn main() {
-    let input = std::fs::read_to_string("inputs/d2.txt").expect("Unable to read input");
+    let input = input!();
     let result = solve(&input);
     println!("{}", result);
 }

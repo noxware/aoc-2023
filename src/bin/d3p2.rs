@@ -1,3 +1,4 @@
+use aocd::prelude::*;
 use std::collections::HashMap;
 
 #[derive(Debug, PartialEq, Eq, Hash, Copy, Clone)]
@@ -204,8 +205,9 @@ fn solve(puzzle: &str) -> i32 {
     builder.build().get_gears().values().map(|g| g.ratio).sum()
 }
 
+#[aocd(2023, 3)]
 fn main() {
-    let input = std::fs::read_to_string("inputs/d3.txt").expect("Unable to read input");
+    let input = input!();
     let result = solve(&input);
     println!("{}", result);
 }

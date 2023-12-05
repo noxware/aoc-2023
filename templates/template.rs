@@ -1,3 +1,5 @@
+use aocd::prelude::*;
+
 fn normalize(puzzle: &str) -> String {
     todo!();
 }
@@ -7,8 +9,9 @@ fn solve(puzzle: &str) -> i32 {
     todo!();
 }
 
+#[aocd(2023, 0)]
 fn main() {
-    let input = std::fs::read_to_string("inputs/dN.txt").expect("Unable to read input");
+    let input = input!();
     let result = solve(&input);
     println!("{}", result);
 }
