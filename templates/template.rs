@@ -4,7 +4,7 @@ fn normalize(puzzle: &str) -> String {
     todo!();
 }
 
-fn solve(puzzle: &str) -> i32 {
+fn solve(puzzle: &str) -> i64 {
     let puzzle = normalize(puzzle);
     todo!();
 }
