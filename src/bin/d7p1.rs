@@ -28,14 +28,6 @@ impl Hand {
         Self { cards, bid }
     }
 
-    // AAAAA -> 50
-    // AA8AA -> 41
-    // 23332 -> 32
-    // TTT98 -> 31
-    // 23432 -> 22
-    // A23A4 -> 21
-    // 23456 -> 11
-
     fn kind_power(&self) -> i64 {
         let mut freq: HashMap<char, i64> = HashMap::new();
 
@@ -43,13 +35,11 @@ impl Hand {
             *freq.entry(*c).or_insert(0) += 1;
         }
 
-        let biggest_count = freq.values().copied().max().unwrap();
-        let second_biggest_count = freq
-            .values()
-            .copied()
-            .filter(|v| *v != biggest_count)
-            .max()
-            .unwrap_or(0);
+        let mut counts: Vec<i64> = freq.values().copied().collect();
+        counts.sort_by(|a, b| b.cmp(a));
+
+        let biggest_count = counts.first().copied().unwrap_or(0);
+        let second_biggest_count = counts.get(1).copied().unwrap_or(0);
 
         biggest_count * 10 + second_biggest_count
     }
